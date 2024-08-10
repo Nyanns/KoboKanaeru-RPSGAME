@@ -1,0 +1,66 @@
+body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #ffe0f7;
+            color: #555;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff80bf;
+            font-size: 2.5em;
+            text-shadow: 1px 1px #ffb3d9;
+        }
+
+        #gameForm {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            border: 2px solid #ffb3d9;
+        }
+
+        input[type="radio"] {
+            margin: 10px;
+            accent-color: #ff80bf;
+        }
+
+        label {
+            margin-right: 20px;
+            font-size: 1.2em;
+        }
+
+        button {
+            background-color: #ff80bf;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ffb3d9;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid #ffb3d9;
+        }
+
+        .hidden {
+            display: none;
+        }

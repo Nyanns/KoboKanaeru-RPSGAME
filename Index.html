@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="/RockPaperScissors/style.css">
+</head>
+
+<body>
+    <h1>Kawaii Rock, Paper, Scissors Game</h1>
+    <p>Choose your kawaii move:</p>
+
+    <form id="gameForm">
+        <input type="radio" id="rock" name="choice" value="rock" required>
+        <label for="rock">🌸 Rock</label><br>
+
+        <input type="radio" id="paper" name="choice" value="paper">
+        <label for="paper">📄 Paper</label><br>
+
+        <input type="radio" id="scissors" name="choice" value="scissors">
+        <label for="scissors">✂️ Scissors</label><br><br>
+
+        <button type="submit">Play!</button>
+    </form>
+
+    <p id="result" class="hidden"></p>
+
+    <script type="text/javascript" src="/RockPaperScissors/script.js"></script>
+</body>
+
+</html>
