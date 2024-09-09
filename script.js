@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cloud = document.createElement('div');
         const image = cloudImages[Math.floor(Math.random() * cloudImages.length)];
         const size = Math.random() * 200 + 300;
-        const duration = 10 + 's';
+        const duration = '10s';
 
         cloud.classList.add('cloud');
         cloud.style.backgroundImage = `url(${image})`;
@@ -32,14 +32,54 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(createRandomCloud, 1000);
     }
 
-    const playButton = document.querySelector('.play');
-    const textDiv = document.querySelector('#game-intro .text');
-    const gameIntro = document.getElementById('game-intro');
-    const game = document.getElementById('game');
-    const gameInfo = document.getElementById('game-info');
+    function transitionToGame() {
+        const gameIntro = document.getElementById('game-intro');
+        const game = document.getElementById('game');
+        const gameInfo = document.getElementById('game-info');
+
+        gameIntro.classList.add('transition');
+
+        setTimeout(() => {
+            gameIntro.style.display = 'none';
+            game.style.opacity = '1'; // Mengatur opacity game menjadi 1
+            game.style.zIndex = '1';  // Mengatur zIndex agar game terlihat di atas
+            gameInfo.classList.add('transition');
+            game.style.display = 'flex'; // Atur display menjadi flex
+        }, 1000);
+    }
+
+    function addMusic() {
+        const musicButton = document.getElementById("musicButton");
+        const backgroundMusic = document.getElementById("backgroundMusic");
+
+        function toggleMusic() {
+            musicButton.classList.toggle("music-off");
+            if (musicButton.classList.contains("music-off")) {
+                musicButton.textContent = "🔇 Music Off"; // Change button text when music is off
+                backgroundMusic.pause(); // Stop the music
+            } else {
+                musicButton.textContent = "🎵 Music"; // Change back to original text when music is on
+                backgroundMusic.play(); // Play the music
+            }
+        }
+
+        musicButton.addEventListener("click", toggleMusic);
+
+        // Attempt to start music automatically
+        backgroundMusic.play().then(() => {
+            console.log("Music started automatically");
+            musicButton.textContent = "🎵 Music"; // Set initial button text
+        }).catch((error) => {
+            console.log("Autoplay was prevented: ", error);
+            // Handle cases where autoplay is prevented
+        });
+    }
 
     function main() {
         createCloudPeriodically();
+
+        const playButton = document.querySelector('.play');
+        const textDiv = document.querySelector('#game-intro .text');
 
         playButton.addEventListener('click', () => {
             textDiv.classList.add('transition');
@@ -53,18 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 transitionToGame();
             }, 500);
         });
-    }
-
-    function transitionToGame() {
-        gameIntro.classList.add('transition');
-
-        setTimeout(() => {
-            gameIntro.style.display = 'none';
-            game.style.opacity = '1'; // Mengatur opacity game menjadi 1
-            game.style.zIndex = '1';  // Mengatur zIndex agar game terlihat di atas
-            gameInfo.classList.add('transition');
-            game.style.display = 'flex'; // Atur display menjadi flex atau block
-        }, 1000);
+        addMusic();
     }
 
     main();

@@ -7,7 +7,7 @@
 }
 
 html {
-    font-family: "Montserrat", sans-serif;
+    font-family: "kobo", sans-serif;
     font-size: 10px;
     color: #636363;
 }
@@ -15,12 +15,11 @@ html {
 body {
     height: 100vh;
     overflow: hidden;
-    font-family: "kobo", sans-serif;
 }
 
 @font-face {
     font-family: "kobo";
-    src: url('/RockPaperScissors/Fonts/kobo-font/Kobo-VG2Vz.ttf');
+    src: url('/RockPaperScissors/Fonts/Chicago.ttf');
 }
 
 h1, h2, button {
@@ -176,53 +175,131 @@ h2 {
     display: none; /* Default display diatur ke none */
     opacity: 0;
     transition: opacity 0.8s ease; /* Transisi opacity */
+    color: #3a3a3a; /* Hitam lebih lembut untuk efek yang lebih imut */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Bayangan lembut untuk menambahkan efek imut */
 }
+
 
 #game-info.transition {
     display: flex; /* Atur display menjadi flex jika diperlukan */
     opacity: 1;
+    flex-direction: column;
+    align-items: center;
 }
 
 #game-info .game-info-container {
     display: flex;
-    justify-content: space-between;
-    width: 80%;
+    justify-content: space-around;
+    width: 100%;
     max-width: 1250px;
-    margin: 0 auto;
+    margin: 32px auto;
     align-items: center;
-    padding-top: 20px;
-}
-
-#game-info .game-info-container img {
-    width: 150px;
-    height: auto;
-    background: transparent; /* Latar belakang transparan */
-    border: 2px solid; /* Border kotak */
-    border-color: #eef1f3; /* Warna border sesuai tema Kobo */
-    border-radius: 10px; /* Sedikit melengkungkan sudut border untuk efek */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan lembut */
-    filter: brightness(1.1) saturate(1.2); /* Mencerahkan dan menambahkan saturasi */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi halus untuk interaksi */
-    cursor: pointer; /* Menampilkan pointer saat hover */
-}
-
-#game-info .game-info-container img:hover {
-    transform: scale(1.1); /* Efek zoom lembut saat hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Bayangan lebih gelap saat hover */
-}
+    padding: 16px 0px 16px 0px;
+    flex-wrap: wrap;
+    background-color: #f0f8ff; /* Warna biru muda yang cocok dengan tema piksel/imut */
+    border: 2px solid #f8f6f6; /* Border lebih tebal untuk efek piksel */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Bayangan tambahan untuk kedalaman */
+    border-radius: 16px; /* Sudut sedikit melengkung untuk efek imut */
+    }
 
 #game-info .player-points,
-#game-info .cpu-points {
+#game-info .enemy-points {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-aligns items horizontally */
     text-align: center;
-    width: 100px;
+}
+
+#game-info .game-info-container img.player-img,
+#game-info .game-info-container img.enemy-img {
+    width: 150px;
+    height: auto;
+    background-color: #a0d9ff; /* Soft blue background (Kobo's theme) */
+    border: 2px solid #fcfcfc; /* Border with Kobo-themed color */
+    border-radius: 20px; /* Slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    cursor: pointer; /* Show pointer on hover */
+}
+
+/* Hover effect */
+#game-info .game-info-container img.player-img:hover,
+#game-info .game-info-container img.enemy-img:hover {
+    transform: scale(1.1); /* Soft zoom effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
 }
 
 #game-info .points,
-#game-info .points {
-    font-weight: 600;
+#game-info .player-name,
+#game-info .enemy-name {
+    font-size: 2rem;
     margin-bottom: 8px;
-}
-
-#game-info .middle {
     text-align: center;
 }
+
+#game-info .points {
+    font-weight: 600;
+}
+
+/* Align round and gamemode closer to the top */
+#game-info .round,
+#game-info .gamemode {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    text-align: center;
+    margin-top: 0; /* Remove any margin-top to bring it closer to the top */
+    padding-top: 0; /* Ensure no padding at the top */
+    position: relative;
+    top: 0; /* Align with top */
+}
+
+#game-info .round {
+    font-weight: 600;
+}
+
+/* Center-align middle section */
+#game-info .middle {
+    text-align: center;
+    margin-top: 0; /* Remove any margin-top */
+    padding-top: 0; /* Remove any padding at the top */
+    position: relative;
+    top: 0; /* Align with top */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center vertically */
+}
+
+#game-info .player-name,
+#game-info .enemy-name {
+    margin-top: 8px;
+}
+
+/* Style for the Music Button */
+#musicButton {
+    background-color: #a0d9ff; /* Soft blue background (Kobo's theme) */
+    color: #ffffff; /* White text color */
+    border: 2px solid #eef1f3; /* Border matching the theme */
+    border-radius: 20px; /* Rounded corners for a cute look */
+    padding: 10px 20px; /* Padding for better size */
+    font-size: 1.2rem; /* Slightly larger font for readability */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    font-family: "kobo", sans-serif;
+}
+
+#musicButton:hover {
+    background-color: #79c1f1; /* Slightly darker blue on hover */
+    transform: scale(1.05); /* Slight scale-up on hover for interaction */
+}
+
+#musicButton.music-off {
+    background-color: #ff8080; /* Soft red when music is off */
+    color: #ffffff; /* White text color */
+    transform: scale(1); /* Reset scale */
+    font-family: "kobo", sans-serif;
+}
+
+
+/** End Game Info **/

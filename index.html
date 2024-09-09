@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KOBO RPS GAME</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -28,18 +28,23 @@
                     <img class="player-img"
                         src="https://static.miraheze.org/hololivewiki/4/4e/Vestia_Zeta_-_Portrait_01.png"
                         alt="player-img">
-                    <p>Zeta</p>
+                    <p class="player-name">Vestia Zeta</p>
                 </div>
                 <div class="middle">
                     <p class="round">Round 1</p>
-                    <p class="gameMode">First to 5</p>
+                    <p class="gamemode">First to 5</p>
+                    <button class="play music" id="musicButton">🎵 Music</button>
+                    <audio id="backgroundMusic" loop>
+                        <source src="/RockPaperScissors/music/MV Oh! Asmara - Kobo Kanaeru.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
                 </div>
                 <div class="enemy-points">
                     <p class="points" id="e-points">0</p>
                     <img class="enemy-img"
                         src="https://static.miraheze.org/hololivewiki/9/9b/Kobo_Kanaeru_-_Portrait_01.png"
                         alt="player-img">
-                    <p>Kobo</p>
+                    <p class="enemy-name">Kobo Kanaeru</p>
                 </div>
             </div>
         </section>
