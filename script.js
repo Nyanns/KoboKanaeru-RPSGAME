@@ -3,8 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cloudImages = [
         'https://media.tenor.com/hiyRZHvnsh4AAAAi/hololive-kobo-kanaeru.gif',
         'https://media.tenor.com/CPHUccd_FMQAAAAi/kobocil-anya-forger.gif',
-        'https://media.tenor.com/vJn0woKbwiIAAAAj/gura-uwu-gura.gif',
-        'https://media.tenor.com/BG6hcz48jQ0AAAAi/hololive-kiara.gif',
     ];
 
     function createRandomCloud() {
@@ -65,13 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         musicButton.addEventListener("click", toggleMusic);
 
-        // Attempt to start music automatically
-        backgroundMusic.play().then(() => {
-            console.log("Music started automatically");
-            musicButton.textContent = "🎵 Music"; // Set initial button text
-        }).catch((error) => {
-            console.log("Autoplay was prevented: ", error);
-            // Handle cases where autoplay is prevented
+        // Attempt to start music on user interaction
+        document.addEventListener('click', () => {
+            backgroundMusic.play().then(() => {
+                console.log("Music started");
+                musicButton.textContent = "🎵 Music"; // Set initial button text
+            }).catch((error) => {
+                console.log("Autoplay was prevented: ", error);
+                // Handle cases where autoplay is prevented
+            });
         });
     }
 
@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 transitionToGame();
             }, 500);
         });
+
         addMusic();
     }
 

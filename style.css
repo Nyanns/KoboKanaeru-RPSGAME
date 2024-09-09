@@ -225,6 +225,7 @@ h2 {
 /* Hover effect */
 #game-info .game-info-container img.player-img:hover,
 #game-info .game-info-container img.enemy-img:hover {
+    background-color: #79c1f1; /* Slightly darker blue on hover */
     transform: scale(1.1); /* Soft zoom effect on hover */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
 }
