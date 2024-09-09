@@ -15,6 +15,7 @@ html {
 body {
     height: 100vh;
     overflow: hidden;
+    font-family: "kobo", sans-serif;
 }
 
 @font-face {
@@ -88,8 +89,7 @@ h2 {
     transform: scale(1.05); /* Efek zoom lembut */
 }
 
-
-/*** Intro ***/
+/*** game Intro ***/
 /* Styling untuk intro animasi */
 #game-intro {
     position: fixed;
@@ -99,7 +99,12 @@ h2 {
     height: 100%;
     background: linear-gradient(to bottom, #a0d9ff, #ffffff); /* Warna Kobo: biru langit */
     overflow: hidden;
-    z-index: 1000;
+    transition: opacity 1s ease;
+}
+
+/* Hide the #game-intro section if needed */
+#game-intro.transition {
+    opacity: 0;
 }
 
 #game-intro .text {
@@ -108,14 +113,20 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: 1s ease;
-    transition-property: margin-top, opacity;
+    transition: margin-top 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), 
+                opacity 1.5s ease;  /* Menambahkan kurva easing yang lebih smooth */
     opacity: 1;
     pointer-events: all;
     animation: show-animation 2s ease;
     z-index: 100;
 }
 
+#game-intro .text.transition {
+    margin-top: -20%;
+    opacity: 0;
+    transition: margin-top 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), 
+                opacity 1s ease;  /* Mengatur durasi dan kurva transisi */
+}
 
 .cloud {
     position: absolute;
@@ -123,6 +134,13 @@ h2 {
     background-size: contain;
     bottom: 0;  /* Pastikan awan berada di bagian bawah layar */
     animation: moveClouds 30s linear infinite;
+    transition: opacity 1s ease-out, transform 1s ease-out;  /* Menambahkan transisi smooth pada opacity dan transform */
+}
+
+.cloud.transition {
+    opacity: 0;  /* Ubah opacity menjadi 0 untuk fade out */
+    transform: scale(0.95);  /* Tambahkan sedikit skala untuk efek smooth */
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 @keyframes moveClouds {
@@ -133,4 +151,78 @@ h2 {
         transform: translateX(200vw);  /* Bergerak hingga ke luar layar di sebelah kanan */
     }
 }
+/*** End game Intro ***/
 
+/*** Game ***/
+#game {
+    opacity: 0;
+    position: relative;
+    z-index: -1;
+    transition: opacity 0.8s ease 1s;
+    overflow: hidden; 
+    height: 100vh;
+    background: linear-gradient(to bottom, #a0d9ff, #ffffff); /* Warna Kobo: biru langit */
+}
+
+#game.transition {
+    opacity: 1;
+    z-index: 1;
+}
+
+/*** Game-info ***/
+#game-info {
+    position: absolute;
+    width: 100%;
+    display: none; /* Default display diatur ke none */
+    opacity: 0;
+    transition: opacity 0.8s ease; /* Transisi opacity */
+}
+
+#game-info.transition {
+    display: flex; /* Atur display menjadi flex jika diperlukan */
+    opacity: 1;
+}
+
+#game-info .game-info-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1250px;
+    margin: 0 auto;
+    align-items: center;
+    padding-top: 20px;
+}
+
+#game-info .game-info-container img {
+    width: 150px;
+    height: auto;
+    background: transparent; /* Latar belakang transparan */
+    border: 2px solid; /* Border kotak */
+    border-color: #eef1f3; /* Warna border sesuai tema Kobo */
+    border-radius: 10px; /* Sedikit melengkungkan sudut border untuk efek */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan lembut */
+    filter: brightness(1.1) saturate(1.2); /* Mencerahkan dan menambahkan saturasi */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi halus untuk interaksi */
+    cursor: pointer; /* Menampilkan pointer saat hover */
+}
+
+#game-info .game-info-container img:hover {
+    transform: scale(1.1); /* Efek zoom lembut saat hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Bayangan lebih gelap saat hover */
+}
+
+#game-info .player-points,
+#game-info .cpu-points {
+    text-align: center;
+    width: 100px;
+}
+
+#game-info .points,
+#game-info .points {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+#game-info .middle {
+    text-align: center;
+}
