@@ -63,15 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         musicButton.addEventListener("click", toggleMusic);
 
-        // Attempt to start music on user interaction
-        document.addEventListener('click', () => {
-            backgroundMusic.play().then(() => {
-                console.log("Music started");
-                musicButton.textContent = "🎵 Music"; // Set initial button text
-            }).catch((error) => {
-                console.log("Autoplay was prevented: ", error);
-                // Handle cases where autoplay is prevented
-            });
+        // Attempt to start music automatically
+        backgroundMusic.play().then(() => {
+            console.log("Music started automatically");
+            musicButton.textContent = "🎵 Music"; // Set initial button text
+        }).catch((error) => {
+            console.log("Autoplay was prevented: ", error);
+            // Handle cases where autoplay is prevented
         });
     }
 
@@ -93,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 transitionToGame();
             }, 500);
         });
-
         addMusic();
     }
 
