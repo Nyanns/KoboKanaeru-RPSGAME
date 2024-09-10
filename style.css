@@ -215,7 +215,6 @@ h2 {
     background-color: #a0d9ff; /* Soft blue background (Kobo's theme) */
     border: 2px solid #fcfcfc; /* Border with Kobo-themed color */
     border-radius: 20px; /* Slightly rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
     cursor: pointer; /* Show pointer on hover */
 }
@@ -224,15 +223,19 @@ h2 {
 #game-info .game-info-container img.enemy-img:hover {
     background-color: #79c1f1; /* Slightly darker blue on hover */
     transform: scale(1.1); /* Soft zoom effect on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
 }
 
-#game-info .points,
-#game-info .player-name,
-#game-info .enemy-name {
+#game-info .points {
     margin-bottom: 8px;
     text-align: center;
     font-size: 1.8rem;
+}
+
+#game-info .player-name,
+#game-info .enemy-name {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-top: 8px;
 }
 
 #game-info .points,
