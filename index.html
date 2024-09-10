@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KOBO RPS GAME</title>
     <script src="script.js" defer></script>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,14 +13,15 @@
     <section id="game-intro">
         <div class="text center">
             <h1 class="title">ROCK PAPER SCISSORS!</h1>
-            <h2 class="sub-tittle">Kobo Kanaeru Version</h2>
+            <h2 class="sub-title">Kobo Kanaeru Version</h2>
             <button class="play btn">Play</button>
         </div>
         <div id="kobo-clouds"></div>
     </section>
 
     <section id="game">
-        <section id="game-info">
+
+        <div id="game-info">
             <div class="game-info-container">
                 <div class="player-points">
                     <p class="points" id="p-points">0</p>
@@ -35,7 +35,8 @@
                     <p class="gamemode">First to 5</p>
                     <button class="play music" id="musicButton">🎵 Music</button>
                     <audio id="backgroundMusic" loop>
-                        <source src="/RockPaperScissors/music/MV Oh! Asmara - Kobo Kanaeru.mp3" type="audio/mpeg">
+                        <!-- Uncomment the source below if you have a valid music file -->
+                        <!-- <source src="/RockPaperScissors/music/MV Oh! Asmara - Kobo Kanaeru.mp3" type="audio/mpeg"> -->
                         Your browser does not support the audio element.
                     </audio>
                 </div>
@@ -43,12 +44,30 @@
                     <p class="points" id="e-points">0</p>
                     <img class="enemy-img"
                         src="https://static.miraheze.org/hololivewiki/9/9b/Kobo_Kanaeru_-_Portrait_01.png"
-                        alt="player-img">
+                        alt="enemy-img">
                     <p class="enemy-name">Kobo Kanaeru</p>
+                </div>
+            </div>
+        </div>
+
+        <section id="selection">
+            <div class="selection-container">
+                <p>Choose an Option</p>
+                <div class="options">
+                    <div class="option" id="rock">
+                        <img src="/RockPaperScissors/Img/rock.png" alt="Rock" draggable="false">
+                    </div>
+                    <div class="option" id="paper">
+                        <img src="/RockPaperScissors/Img/paper.png" alt="Paper" draggable="false">
+                    </div>
+                    <div class="option" id="scissors">
+                        <img src="/RockPaperScissors/Img/scissors.png" alt="Scissors" draggable="false">
+                    </div>
                 </div>
             </div>
         </section>
     </section>
+
 </body>
 
 </html>

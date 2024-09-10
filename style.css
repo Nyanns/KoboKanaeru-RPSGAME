@@ -23,24 +23,23 @@ body {
 }
 
 h1, h2, button {
-    color: #333333;
- /* Abu-abu gelap */
-     transition: transform 0.3s ease;  /* Transisi halus untuk animasi */
+    color: #333333; /* Abu-abu gelap */
+    transition: transform 0.3s ease; /* Transisi halus untuk animasi */
 }
 
 h1:hover, h2:hover {
-    animation: bounce 0.6s ease;  /* Menambahkan animasi bounce saat hover */
+    animation: bounce 0.6s ease; /* Menambahkan animasi bounce saat hover */
 }
 
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);  /* Posisi normal */
+        transform: translateY(0); /* Posisi normal */
     }
     40% {
-        transform: translateY(-20px);  /* Lompat lebih tinggi */
+        transform: translateY(-20px); /* Lompat lebih tinggi */
     }
     60% {
-        transform: translateY(-10px);  /* Sedikit turun kembali */
+        transform: translateY(-10px); /* Sedikit turun kembali */
     }
 }
 
@@ -63,7 +62,7 @@ h2 {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
 .btn {
@@ -88,7 +87,7 @@ h2 {
     transform: scale(1.05); /* Efek zoom lembut */
 }
 
-/*** game Intro ***/
+/*** Game Intro ***/
 /* Styling untuk intro animasi */
 #game-intro {
     position: fixed;
@@ -101,7 +100,6 @@ h2 {
     transition: opacity 1s ease;
 }
 
-/* Hide the #game-intro section if needed */
 #game-intro.transition {
     opacity: 0;
 }
@@ -113,7 +111,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     transition: margin-top 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), 
-                opacity 1.5s ease;  /* Menambahkan kurva easing yang lebih smooth */
+                opacity 1.5s ease; /* Menambahkan kurva easing yang lebih smooth */
     opacity: 1;
     pointer-events: all;
     animation: show-animation 2s ease;
@@ -124,36 +122,41 @@ h2 {
     margin-top: -20%;
     opacity: 0;
     transition: margin-top 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), 
-                opacity 1s ease;  /* Mengatur durasi dan kurva transisi */
+                opacity 1s ease; /* Mengatur durasi dan kurva transisi */
 }
 
 .cloud {
     position: absolute;
     background-repeat: no-repeat;
     background-size: contain;
-    bottom: 0;  /* Pastikan awan berada di bagian bawah layar */
+    bottom: 0; /* Pastikan awan berada di bagian bawah layar */
     animation: moveClouds 30s linear infinite;
-    transition: opacity 1s ease-out, transform 1s ease-out;  /* Menambahkan transisi smooth pada opacity dan transform */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Menambahkan transisi smooth pada opacity dan transform */
 }
 
 .cloud.transition {
-    opacity: 0;  /* Ubah opacity menjadi 0 untuk fade out */
-    transform: scale(0.95);  /* Tambahkan sedikit skala untuk efek smooth */
+    opacity: 0; /* Ubah opacity menjadi 0 untuk fade out */
+    transform: scale(0.95); /* Tambahkan sedikit skala untuk efek smooth */
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 @keyframes moveClouds {
     0% {
-        transform: translateX(-100vw);  /* Mulai dari luar layar di sebelah kiri */
+        transform: translateX(-100vw); /* Mulai dari luar layar di sebelah kiri */
     }
     100% {
-        transform: translateX(200vw);  /* Bergerak hingga ke luar layar di sebelah kanan */
+        transform: translateX(200vw); /* Bergerak hingga ke luar layar di sebelah kanan */
     }
 }
-/*** End game Intro ***/
+/*** End Game Intro ***/
 
 /*** Game ***/
 #game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0px; /* Mengatur jarak antar item dalam kolom */
     opacity: 0;
     position: relative;
     z-index: -1;
@@ -168,17 +171,14 @@ h2 {
     z-index: 1;
 }
 
-/*** Game-info ***/
+/*** Game Info ***/
 #game-info {
-    position: absolute;
     width: 100%;
     display: none; /* Default display diatur ke none */
     opacity: 0;
     transition: opacity 0.8s ease; /* Transisi opacity */
-    color: #3a3a3a; /* Hitam lebih lembut untuk efek yang lebih imut */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Bayangan lembut untuk menambahkan efek imut */
 }
-
 
 #game-info.transition {
     display: flex; /* Atur display menjadi flex jika diperlukan */
@@ -192,15 +192,13 @@ h2 {
     justify-content: space-around;
     width: 100%;
     max-width: 1250px;
-    margin: 32px auto;
     align-items: center;
-    padding: 16px 0px 16px 0px;
-    flex-wrap: wrap;
-    background-color: #f0f8ff; /* Warna biru muda yang cocok dengan tema piksel/imut */
-    border: 2px solid #f8f6f6; /* Border lebih tebal untuk efek piksel */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Bayangan tambahan untuk kedalaman */
-    border-radius: 16px; /* Sudut sedikit melengkung untuk efek imut */
-    }
+    padding: 16px; /* Mengurangi padding untuk lebih banyak ruang konten */
+    flex-wrap: wrap; /* Membiarkan elemen membungkus saat ruang terbatas */
+    background-color: #f0f8ff;
+    border: 2px solid #f8f6f6;
+    border-radius: 16px;
+}
 
 #game-info .player-points,
 #game-info .enemy-points {
@@ -222,7 +220,6 @@ h2 {
     cursor: pointer; /* Show pointer on hover */
 }
 
-/* Hover effect */
 #game-info .game-info-container img.player-img:hover,
 #game-info .game-info-container img.enemy-img:hover {
     background-color: #79c1f1; /* Slightly darker blue on hover */
@@ -233,35 +230,59 @@ h2 {
 #game-info .points,
 #game-info .player-name,
 #game-info .enemy-name {
-    font-size: 2rem;
     margin-bottom: 8px;
     text-align: center;
+    font-size: 1.8rem;
 }
 
-#game-info .points {
+#game-info .points,
+#game-info .round,
+#game-info .gamemode {
+    color: #3a3a3a; /* Hitam lebih lembut untuk efek yang lebih imut */
+}
+
+#game-info .player-name,
+#game-info .enemy-name {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+#game-info .player-points,
+#game-info .enemy-points {
+    flex: 1 1 200px; /* Izinkan elemen ini untuk menyesuaikan ukurannya sesuai dengan ruang */
+    margin: 10px; /* Jarak antar elemen */
+}
+
+#game-info .points,
+#game-info .round {
     font-weight: 600;
+}
+
+#game-info .gamemode {
+    margin-block: 52px; /* Margin top set to 8px */
+}
+
+#game-info .round{
+    font-size: 3rem;
 }
 
 /* Align round and gamemode closer to the top */
 #game-info .round,
 #game-info .gamemode {
-    font-size: 2rem;
-    margin-bottom: 8px;
     text-align: center;
-    margin-top: 0; /* Remove any margin-top to bring it closer to the top */
     padding-top: 0; /* Ensure no padding at the top */
     position: relative;
     top: 0; /* Align with top */
 }
 
-#game-info .round {
-    font-weight: 600;
+#game-info .gamemode {
+    font-size: 2rem;
 }
 
 /* Center-align middle section */
 #game-info .middle {
     text-align: center;
-    margin-top: 0; /* Remove any margin-top */
+    margin-top: 8px; /* Margin top set to 8px */
     padding-top: 0; /* Remove any padding at the top */
     position: relative;
     top: 0; /* Align with top */
@@ -302,5 +323,183 @@ h2 {
     font-family: "kobo", sans-serif;
 }
 
+/*** Game Selection ***/
+#selection {
+    width: 100%;
+    transition: 0.3s ease 0.3s;
+}
 
-/** End Game Info **/
+#selection.transition {
+    top: 40%;
+    opacity: 0;
+    transition: 0.3s ease;
+    pointer-events: none;
+}
+
+#selection.fadeOut {
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#selection .selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto; /* Menghapus margin atas bawah agar container tetap di tengah */
+    justify-content: center;
+    padding: 16px; /* Tambahkan padding untuk memberikan ruang di dalam container */
+    box-sizing: border-box; /* Pastikan padding diperhitungkan dalam width */
+}
+
+#selection p {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-top: 8px; /* Margin top set to 8px */
+}
+
+#selection .options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 11%; 
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Pastikan elemen mengambil seluruh lebar container */
+    cursor: pointer;
+}
+
+#selection .options .option img {
+    flex: 1 1 150px; /* Izinkan elemen untuk tumbuh dan menyusut, dengan lebar dasar 150px */
+    max-width: 200px; /* Beri batas maksimal lebar */
+    margin: 16px; /* Beri ruang antar elemen */
+    max-width: 150px;
+    width: 100%; /* Sesuaikan dengan max-width */
+    height: auto; /* Pertahankan proporsi gambar */
+    object-fit: contain; /* Pastikan gambar ditampilkan dengan benar */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+#selection .options .option img:hover {
+    transform: scale(1.1); /* Soft zoom effect on hover */
+}
+
+#selection img {
+    transform: rotate(-90deg);
+}
+
+/* End Selection */
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+    #selection .selection-container {
+        width: 90%; /* Sesuaikan lebar agar lebih sesuai dengan layar lebih kecil */
+    }
+
+    #selection .options {
+        gap: 8%; /* Kurangi jarak antar elemen */
+    }
+
+    #selection .options .option img {
+        max-width: 120px; /* Sesuaikan ukuran gambar pada layar lebih kecil */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #selection .selection-container {
+        width: 100%; /* Lebar penuh untuk layar kecil */
+        padding: 10px; /* Kurangi padding */
+    }
+
+    #selection .options {
+        gap: 20px; /* Beri jarak yang lebih besar antar elemen */
+    }
+
+    #selection .options .option img {
+        max-width: 100px; /* Sesuaikan ukuran gambar */
+    }
+}
+
+@media screen and (max-width: 414px) { /* iPhone 12 */
+    html {
+        font-size: 9px; /* Sesuaikan font-size untuk tampilan lebih kecil */
+    }
+
+    h1 {
+        font-size: 3.6rem; /* Sesuaikan ukuran font h1 */
+    }
+
+    h2 {
+        font-size: 1.8rem; /* Sesuaikan ukuran font h2 */
+    }
+
+    .btn {
+        width: 150px; /* Sesuaikan lebar tombol */
+        height: 40px; /* Sesuaikan tinggi tombol */
+        font-size: 1.8rem; /* Sesuaikan ukuran font tombol */
+    }
+
+    #game-info .game-info-container {
+        padding: 10px; /* Kurangi padding untuk layar lebih kecil */
+    }
+
+    #game-info .game-info-container img.player-img,
+    #game-info .game-info-container img.enemy-img {
+        width: 120px; /* Sesuaikan ukuran gambar */
+    }
+
+    #selection .selection-container {
+        padding: 10px; /* Kurangi padding */
+    }
+
+    #selection .options .option img {
+        max-width: 80px; /* Sesuaikan ukuran gambar */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #game-info .game-info-container {
+        padding: 8px; /* Kurangi padding lebih jauh */
+        max-width: 100%; /* Lebar penuh untuk layar kecil */
+    }
+
+    #game-info .game-info-container .player-points,
+    #game-info .game-info-container .enemy-points {
+        flex: 1 1 150px; /* Ukuran fleksibel lebih kecil */
+        margin: 6px; /* Jarak lebih kecil antar elemen */
+    }
+
+    #game-info .game-info-container img {
+        max-width: 100px; /* Sesuaikan ukuran gambar */
+    }
+
+    #game-info .gamemode {
+    margin-block: 24px; /* Margin top set to 8px */
+    }
+}
+
+@media screen and (max-width: 414px) { /* iPhone 12 */
+    #game-info {
+        padding: 8px; /* Padding diatur lebih kecil pada layar kecil */
+    }
+
+    #game-info .game-info-container {
+        padding: 6px; /* Kurangi padding untuk layar lebih kecil */
+        align-items: center;
+    }
+
+    #game-info .game-info-container .player-points,
+    #game-info .game-info-container .enemy-points {
+        flex: 1 1 120px; /* Ukuran fleksibel lebih kecil */
+        margin: 4px; /* Jarak lebih kecil antar elemen */
+    }
+
+    #game-info .gamemode {
+    margin-block: 24px; /* Margin top set to 8px */
+    }
+
+    #game-info .game-info-container img {
+        max-width: 80px; /* Sesuaikan ukuran gambar */
+    }
+}

@@ -79,6 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const playButton = document.querySelector('.play');
         const textDiv = document.querySelector('#game-intro .text');
 
+        addMusic();
+
         playButton.addEventListener('click', () => {
             textDiv.classList.add('transition');
 
@@ -91,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 transitionToGame();
             }, 500);
         });
-        addMusic();
     }
 
     main();
