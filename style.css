@@ -59,7 +59,7 @@ h2 {
 }
 
 .center {
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -69,7 +69,6 @@ h2 {
     width: 200px;
     height: 50px;
     border-radius: 12px;
-    border: 0.5px solid #333333; /* Ubah dari transparent ke solid untuk visibilitas */
     background: transparent;
     font-family: "kobo", sans-serif;
     font-size: 2.4rem;
@@ -83,7 +82,6 @@ h2 {
 .btn:hover {
     background: #333333; /* Warna latar belakang saat hover */
     color: #FAFAFA; /* Warna teks saat hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan lembut */
     transform: scale(1.05); /* Efek zoom lembut */
 }
 
@@ -158,7 +156,7 @@ h2 {
     justify-content: center;
     gap: 0px; /* Mengatur jarak antar item dalam kolom */
     opacity: 0;
-    position: relative;
+    position: relative; /* Mengatur posisi relatif */
     z-index: -1;
     transition: opacity 0.8s ease 1s;
     overflow: hidden; 
@@ -327,22 +325,32 @@ h2 {
 }
 
 /*** Game Selection ***/
+/* Definisikan animasi untuk pergerakan ke bawah dan fade out */
+@keyframes slideDownAndFade {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100%); /* Atau nilai lain sesuai kebutuhan */
+        opacity: 0;
+    }
+}
+
 #selection {
+    position: relative;
     width: 100%;
-    transition: 0.3s ease 0.3s;
+    transition: opacity 0.5s ease; /* Transisi untuk opacity jika diperlukan */
 }
 
 #selection.transition {
-    top: 40%;
-    opacity: 0;
-    transition: 0.3s ease;
-    pointer-events: none;
+    animation: slideDownAndFade 0.5s ease forwards; /* Gunakan animasi untuk slide down dan fade out */
+    pointer-events: none; /* Mencegah interaksi saat animasi berjalan */
 }
 
 #selection.fadeOut {
     opacity: 0;
-    z-index: -1;
-    pointer-events: none;
+    pointer-events: none; /* Mencegah interaksi setelah fade out selesai */
 }
 
 #selection .selection-container {

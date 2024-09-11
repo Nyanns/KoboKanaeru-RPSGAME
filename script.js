@@ -73,6 +73,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Global Variable
+    let playerScore = 0;
+    let computerScore = 0;
+    let roundNum = 1;
+
+    //selection Variable
+    const rockDiv = document.querySelector("#selection #rock");
+    const paperDiv = document.querySelector("#selection #paper");
+    const scissorsDiv = document.querySelector("#selection #scissors");
+    const selectionSect = document.querySelector("#game #selection");
+
+    //Round Variable
+
+
+
+    // get computer choice
+    function getComputerChoice() {
+        let choices = ["rock", "paper", "scissors"];
+        let computerChoice = Math.floor(Math.random() * choices.length);
+        return choices[computerChoice];
+    }
+
+    // get player Choice
+    function game(playerChoice) {
+
+    }
+
     function main() {
         createCloudPeriodically();
 
@@ -93,6 +120,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 transitionToGame();
             }, 500);
         });
+
+        rockDiv.addEventListener('click', () => {
+            selectionSect.classList.add('transition');
+            game(rockDiv.getAttribute('id'));
+            console.log(rockDiv.id); // Menampilkan id dari elemen rockDiv
+        })
+
+        paperDiv.addEventListener('click', () => {
+            selectionSect.classList.add('transition');
+            game(paperDiv.getAttribute('id'));
+            console.log(paperDiv.id); // Menampilkan id dari elemen rockDiv
+        })
+
+        scissorsDiv.addEventListener('click', () => {
+            selectionSect.classList.add('transition');
+            game(scissorsDiv.getAttribute('id'));
+            console.log(scissorsDiv.id); // Menampilkan id dari elemen rockDiv
+        })
     }
 
     main();
