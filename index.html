@@ -5,71 +5,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KOBO RPS GAME</title>
+    <!-- Menghubungkan file JavaScript untuk game logic -->
     <script src="script.js" defer></script>
+    <!-- Menghubungkan file CSS untuk styling -->
     <link rel="stylesheet" href="/RockPaperScissors/style.css">
 </head>
 
 <body>
+    <!-- Bagian intro game -->
     <section id="game-intro">
         <div class="text center">
+            <!-- Judul utama game -->
             <h1 class="title">ROCK PAPER SCISSORS!</h1>
+            <!-- Sub-judul dengan versi karakter Kobo Kanaeru -->
             <h2 class="sub-title">Kobo Kanaeru Version</h2>
+            <!-- Tombol untuk memulai permainan -->
             <button class="play btn">Play</button>
         </div>
+        <!-- Bagian untuk awan bergerak (seperti efek visual) -->
         <div id="kobo-clouds"></div>
     </section>
 
+    <!-- Bagian utama game -->
     <section id="game">
-
+        <!-- Informasi tentang pemain dan musuh -->
         <div id="game-info">
             <div class="game-info-container">
+                <!-- Bagian poin dan gambar pemain -->
                 <div class="player-points">
+                    <!-- Poin pemain, dimulai dari 0 -->
                     <p class="points" id="p-points">0</p>
+                    <!-- Gambar pemain (Vestia Zeta) -->
                     <img class="player-img"
                         src="https://static.miraheze.org/hololivewiki/4/4e/Vestia_Zeta_-_Portrait_01.png"
                         alt="player-img">
+                    <!-- Nama pemain -->
                     <p class="player-name">Vestia Zeta</p>
                 </div>
+
+                <!-- Bagian tengah untuk informasi game -->
                 <div class="middle">
+                    <!-- Informasi ronde saat ini -->
                     <p class="round">Round 1</p>
+                    <!-- Mode permainan (First to 5) -->
                     <p class="gamemode">First to 5</p>
+                    <!-- Tombol untuk memutar musik background -->
                     <button class="play music" id="musicButton">🎵 Music</button>
+                    <!-- Audio untuk musik background -->
                     <audio id="backgroundMusic" loop>
-                        <!-- Uncomment the source below if you have a valid music file -->
-                        <!-- <source src="/RockPaperScissors/music/MV Oh! Asmara - Kobo Kanaeru.mp3" type="audio/mpeg"> -->
+                        <!-- Uncomment baris di bawah ini jika ada file musik yang valid -->
+                        <source src="/RockPaperScissors/music/MV Oh! Asmara - Kobo Kanaeru.mp3" type="audio/mpeg">
                         Your browser does not support the audio element.
                     </audio>
                 </div>
+
+                <!-- Bagian poin dan gambar musuh -->
                 <div class="enemy-points">
+                    <!-- Poin musuh, dimulai dari 0 -->
                     <p class="points" id="e-points">0</p>
+                    <!-- Gambar musuh (Kobo Kanaeru) -->
                     <img class="enemy-img"
                         src="https://static.miraheze.org/hololivewiki/9/9b/Kobo_Kanaeru_-_Portrait_01.png"
                         alt="enemy-img">
+                    <!-- Nama musuh -->
                     <p class="enemy-name">Kobo Kanaeru</p>
                 </div>
             </div>
         </div>
 
+        <!-- Bagian pemilihan pilihan oleh pemain -->
         <section id="selection">
             <div class="selection-container">
+                <!-- Teks untuk instruksi pemain memilih opsi -->
                 <p>Choose an Option</p>
                 <div class="options">
+                    <!-- Opsi batu -->
                     <div class="option" id="rock">
                         <img src="/RockPaperScissors/Img/rock.png" alt="Rock" draggable="false">
                     </div>
+                    <!-- Opsi kertas -->
                     <div class="option" id="paper">
                         <img src="/RockPaperScissors/Img/paper.png" alt="Paper" draggable="false">
                     </div>
+                    <!-- Opsi gunting -->
                     <div class="option" id="scissors">
                         <img src="/RockPaperScissors/Img/scissors.png" alt="Scissors" draggable="false">
                     </div>
                 </div>
             </div>
         </section>
-    </section>
 
-    <section id="round">
+        <!-- Bagian tampilan hasil ronde -->
+        <section id="round">
+            <div class="round-container">
+                <!-- Sisi pemain dengan hasil pilihan -->
+                <div class="player-side">
+                    <h2>Zeta</h2>
+                    <!-- Tempat untuk menampilkan pilihan pemain -->
+                    <div class="player-selection"></div>
+                </div>
+                <!-- Sisi musuh dengan hasil pilihan -->
+                <div class="cpu-side">
+                    <h2>Kobo</h2>
+                    <!-- Tempat untuk menampilkan pilihan musuh (Kobo) -->
+                    <div class="cpu-selection"></div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Bagian akhir permainan (ketika game selesai) -->
+        <section id="game-end">
+            <div class="game-end-container">
+                <!-- Pesan akhir permainan (menang/kalah) -->
+                <h2 class="end-msg"></h2>
+                <!-- Tombol untuk memulai ulang permainan -->
+                <button class="replay btn">Play Again</button>
+            </div>
+        </section>
     </section>
 </body>
 
